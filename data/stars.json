@@ -1,0 +1,53 @@
+{
+  "updated_at": "2026-09-21",
+  "repos": {
+    "grf-labs/grf": {
+      "stars": 1111,
+      "pushed_at": "2026-04-30"
+    },
+    "DoubleML/doubleml-for-r": {
+      "stars": 171,
+      "pushed_at": "2026-09-01"
+    },
+    "ecpolley/SuperLearner": {
+      "stars": 294,
+      "pushed_at": "2026-08-16"
+    },
+    "thomasjemielita/StratifiedMedicine": {
+      "stars": 4,
+      "pushed_at": "2022-04-03"
+    },
+    "etverse/causatr": {
+      "stars": 5,
+      "pushed_at": "2026-06-26"
+    },
+    "uber/causalml": {
+      "stars": 6002,
+      "pushed_at": "2026-08-20"
+    },
+    "r-causal/causal-inference-in-R": {
+      "stars": 252,
+      "pushed_at": "2026-08-06"
+    },
+    "nhsengland/causal-handbook": {
+      "stars": 14,
+      "pushed_at": "2026-02-03"
+    },
+    "xieliaing/CausalInferenceIntro": {
+      "stars": 957,
+      "pushed_at": "2026-03-16"
+    },
+    "jbryer/psa": {
+      "stars": 94,
+      "pushed_at": "2026-04-01"
+    },
+    "matteocourthoud/awesome-causal-inference": {
+      "stars": 1189,
+      "pushed_at": "2026-04-21"
+    },
+    "HUI950319/causalR": {
+      "stars": 1,
+      "pushed_at": "2026-09-21"
+    }
+  }
+}

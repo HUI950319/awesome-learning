@@ -1,0 +1,210 @@
+# awesome-learning 数据源。README.md 由 scripts/build.R 从这里生成，不要手改 README。
+#
+# 字段：
+#   id             唯一标识，小写，用连字符
+#   type           package | book | site
+#   section        所属板块，README 按此分组、按首次出现的顺序排列
+#   name           显示名
+#   url            主链接，README 里名称指向这里
+#   repo           GitHub owner/repo（可选），有则由 scripts/refresh_stars.R 自动刷 star
+#   homepage       文档或在线阅读地址（可选）
+#   lang           R | Python（可选）
+#   source         CRAN | Bioconductor | GitHub | PyPI（package 用，可选）
+#   description_zh 一句话中文描述，必填
+#   description_en 英文描述（可选，多取自 GitHub 描述）
+#   tags           标签列表（可选）
+#   status         using 在用 | tried 试过 | to-read 待读
+#   note           个人批注，必填：为什么留、在哪用过、踩过什么坑
+#   related        对应自己的哪个包（可选）
+#   authors        book 用（可选）
+#   free_online    book 用，是否可免费在线阅读（可选）
+
+# ---------------------------------------------------------------- 因果推断
+
+- id: grf
+  type: package
+  section: 因果推断
+  name: grf
+  url: https://github.com/grf-labs/grf
+  repo: grf-labs/grf
+  homepage: https://grf-labs.github.io/grf/
+  lang: R
+  source: CRAN
+  description_zh: "广义随机森林：因果森林、异质处理效应与工具变量森林"
+  description_en: "Generalized Random Forests"
+  tags: [causal-forest, HTE, effect-modifier]
+  status: tried
+  note: "拿它找效应修饰变量时没跑赢 OLS 交互扫描；适合估计 CATE，不适合当变量筛选器。"
+
+- id: doubleml
+  type: package
+  section: 因果推断
+  name: DoubleML
+  url: https://github.com/DoubleML/doubleml-for-r
+  repo: DoubleML/doubleml-for-r
+  homepage: https://docs.doubleml.org/
+  lang: R
+  source: CRAN
+  description_zh: "双重机器学习（Double / Debiased ML）的 R 实现，nuisance 模型走 mlr3"
+  description_en: "DoubleML - Double Machine Learning in R"
+  tags: [DML, debiased-ML, mlr3]
+  status: using
+  note: "causalR 的 dml 敏感性分析（dml.sensemakr）建在它的拟合结果上。"
+  related: [causalR]
+
+- id: superlearner
+  type: package
+  section: 因果推断
+  name: SuperLearner
+  url: https://github.com/ecpolley/SuperLearner
+  repo: ecpolley/SuperLearner
+  lang: R
+  source: CRAN
+  description_zh: "超级学习器：多算法加权集成，常作 TMLE、IPW 的 nuisance 估计器"
+  description_en: "Current version of the SuperLearner R package"
+  tags: [ensemble, nuisance, TMLE]
+  status: using
+  note: "causalR::get_PSW 的 super 方案用它估倾向评分，必须显式传 SL.library。"
+  related: [causalR]
+
+- id: stratifiedmedicine
+  type: package
+  section: 因果推断
+  name: StratifiedMedicine
+  url: https://cran.r-project.org/package=StratifiedMedicine
+  repo: thomasjemielita/StratifiedMedicine
+  lang: R
+  source: CRAN
+  description_zh: "亚组识别与分层医学框架：PRISM 流程串起变量过滤、倾向评分、亚组模型与效应估计"
+  description_en: "Stratified Medicine: subgroup identification via the PRISM framework"
+  tags: [subgroup, HTE, MOB, PRISM]
+  status: tried
+  note: "用 MOB 找效应修饰变量必须传 parm=2，否则预后变量也会被当成分裂点；先做变量过滤反而会多切出假亚组；“没找到亚组”表现为直接报错而不是空结果。"
+
+- id: model4you
+  type: package
+  section: 因果推断
+  name: model4you
+  url: https://cran.r-project.org/package=model4you
+  lang: R
+  source: CRAN
+  description_zh: "个体化处理效应的模型树与模型森林（pmtree / pmforest），基于 partykit"
+  description_en: "Stratified and personalised models based on model-based trees and forests"
+  tags: [model-based-forest, HTE, effect-modifier, partykit]
+  status: tried
+  note: "pmforest 的变量重要性排效应修饰变量拿过 10/10；varimp 会随机报 contrasts 错，根因是建森林时没限定每个节点两臂的最小样本量。"
+
+- id: causatr
+  type: package
+  section: 因果推断
+  name: causatr
+  url: https://github.com/etverse/causatr
+  repo: etverse/causatr
+  homepage: https://etverse.github.io/causatr/
+  lang: R
+  source: GitHub
+  description_zh: "按《Causal Inference: What If》统一封装 g-computation、IPW、AIPW、SNM 与匹配：causat() 拟合，contrast() 对比"
+  description_en: "Unified interface for causal effect estimation: g-computation, IPW, AIPW, SNM and matching"
+  tags: [g-computation, IPW, AIPW, what-if]
+  status: to-read
+  note: "未上 CRAN 的新包，作者注明由 Claude 协助编写；先当 What If 各方法的对照实现看，用之前核一遍数值。"
+
+- id: causalml
+  type: package
+  section: 因果推断
+  name: causalml
+  url: https://github.com/uber/causalml
+  repo: uber/causalml
+  homepage: https://causalml.readthedocs.io/
+  lang: Python
+  source: PyPI
+  description_zh: "Uber 的 uplift 建模与因果 ML 库：meta-learner、uplift tree、因果森林"
+  description_en: "Uplift modeling and causal inference with machine learning algorithms"
+  tags: [uplift, meta-learner]
+  status: to-read
+  note: "Python 侧的对照实现，看 meta-learner（S / T / X / R）的接口设计时参考。"
+
+- id: causal-inference-in-r
+  type: book
+  section: 因果推断
+  name: Causal Inference in R
+  url: https://www.r-causal.org/
+  repo: r-causal/causal-inference-in-R
+  authors: "Malcolm Barrett, Lucy D'Agostino McGowan, Travis Gerke"
+  lang: R
+  free_online: true
+  description_zh: "用 tidyverse 讲因果推断全流程：DAG、倾向评分、g 方法、敏感性分析"
+  description_en: "Causal Inference in R: A book!"
+  tags: [textbook, DAG, propensity-score, tidyverse]
+  status: using
+  note: "causalR 读书笔记的主线教材之一。"
+  related: [causalR]
+
+- id: nhs-causal-handbook
+  type: book
+  section: 因果推断
+  name: "Causal Inference for Intervention & Service Evaluations"
+  url: https://nhsengland.github.io/causal-handbook/
+  repo: nhsengland/causal-handbook
+  authors: "NHS England"
+  free_online: true
+  description_zh: "面向政策干预与服务评估的实用手册，强调用观察性真实世界数据出稳健证据"
+  description_en: "A practical handbook on causal inference methods for evaluating policy interventions and service changes within the NHS"
+  tags: [handbook, RWD, policy-evaluation, quarto]
+  status: to-read
+  note: "MIT 协议的 Quarto 手册，2026 年初仍标注为初稿；看它怎么给非统计读者讲方法选择。"
+
+- id: causal-inference-brave-and-true-zh
+  type: book
+  section: 因果推断
+  name: "Causal Inference for the Brave and True（中文版）"
+  url: https://github.com/xieliaing/CausalInferenceIntro
+  repo: xieliaing/CausalInferenceIntro
+  authors: "Matheus Facure 原著，xieliaing 中译"
+  lang: Python
+  free_online: true
+  description_zh: "《勇敢而真实的因果推断》中文翻译，代码为 Python，偏计量经济学与策略评估"
+  description_en: "Chinese translation of Causal Inference for the Brave and True"
+  tags: [textbook, econometrics, 中文]
+  status: to-read
+  note: "讲法比统计教材直白，DID、合成控制、RDD 几章可与 R 书互补。"
+
+- id: applied-psa-with-r
+  type: book
+  section: 因果推断
+  name: Applied Propensity Score Analysis with R
+  url: https://psa.bryer.org/
+  repo: jbryer/psa
+  authors: "Jason Bryer"
+  lang: R
+  free_online: true
+  description_zh: "倾向评分分析的 R 实操书：匹配、分层、加权、bootstrap 与敏感性分析"
+  description_en: "Applied Propensity Score Analysis with R"
+  tags: [propensity-score, matching, weighting, bootstrap]
+  status: to-read
+  note: "收的是 bootstrap 一章。延伸阅读：Lee / Lessler / Stuart 2010（PMC2807890）用 ML 改进 PS 加权；Cannas / Arpino 2019（Biometrical Journal）比较 PS 匹配与加权里的 ML 算法和平衡指标。"
+
+- id: awesome-causal-inference
+  type: site
+  section: 因果推断
+  name: "awesome-causal-inference（libraries）"
+  url: https://github.com/matteocourthoud/awesome-causal-inference/blob/main/src/libraries.md
+  repo: matteocourthoud/awesome-causal-inference
+  description_zh: "跨语言因果推断资源清单，libraries 页按语言列出 R、Python、Stata 的因果库"
+  description_en: "A curated list of causal inference libraries, books, courses and papers"
+  tags: [awesome-list, libraries]
+  status: using
+  note: "找某个方法有没有现成实现时先翻这一页；本仓库不重复它的全量，只收实际用过或准备用的。"
+
+- id: causalr-notes
+  type: site
+  section: 因果推断
+  name: "因果推断读书笔记（causalR）"
+  url: https://hui950319.github.io/causalR/
+  repo: HUI950319/causalR
+  description_zh: "自己的因果推断读书笔记 Quarto 站点，也是 causalR 包（get_sens / plt_sens 敏感性分析）的主页"
+  description_en: "Causal inference reading notes and the causalR package site"
+  tags: [own, notes, quarto, sensitivity-analysis]
+  status: using
+  note: "本清单里 related 指向 causalR 的条目，都能在这个站点找到对应章节。"
+  related: [causalR]
