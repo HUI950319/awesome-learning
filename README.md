@@ -3,7 +3,7 @@
 个人精选的 R 包、Agent Skills、视频工具、学习网站与 R 书清单，按临床研究与生信的分析工作流组织。
 每一条都带一句批注：为什么留下、在哪用过、踩过什么坑。
 
-- 条目：28（软件包 7 · Agent Skills 13 · 工具 1 · 书与手册 4 · 站点与清单 3）
+- 条目：30（软件包 9 · Agent Skills 13 · 工具 1 · 书与手册 4 · 站点与清单 3）
 - 状态：`在用` 正在项目里用 · `试过` 跑过但没固定进流程 · `待读` 收了还没细看
 - Star 数据更新于 2026-09-22
 
@@ -26,6 +26,8 @@
 | [model4you](https://cran.r-project.org/package=model4you) | 个体化处理效应的模型树与模型森林（pmtree / pmforest），基于 partykit | `R` `CRAN` `model-based-forest` `HTE` `effect-modifier` `partykit` | 试过 |  | pmforest 的变量重要性排效应修饰变量拿过 10/10；varimp 会随机报 contrasts 错，根因是建森林时没限定每个节点两臂的最小样本量。 |
 | [causatr](https://github.com/etverse/causatr) · [文档](https://etverse.github.io/causatr/) | 按《Causal Inference: What If》统一封装 g-computation、IPW、AIPW、SNM 与匹配：causat() 拟合，contrast() 对比 | `R` `GitHub` `g-computation` `IPW` `AIPW` `what-if` | 待读 | 5 | 未上 CRAN 的新包，作者注明由 Claude 协助编写；先当 What If 各方法的对照实现看，用之前核一遍数值。 |
 | [causalml](https://github.com/uber/causalml) · [文档](https://causalml.readthedocs.io/) | Uber 的 uplift 建模与因果 ML 库：meta-learner、uplift tree、因果森林 | `Python` `PyPI` `uplift` `meta-learner` | 待读 | 6,002 | Python 侧的对照实现，看 meta-learner（S / T / X / R）的接口设计时参考。 |
+| [unihtee](https://github.com/insightsengineering/unihtee) · [文档](https://insightsengineering.github.io/unihtee/) | 用 TEM-VIP 在高维数据中筛选治疗效应修饰变量，并提供绝对和相对效应尺度上的推断 | `R` `GitHub` `TEM-VIP` `HTE` `effect-modifier` `causal-ML` | 试过 | 5 | 适合做单变量效应修饰筛选和正式推断；TEM-VIP 是边际线性投影，复杂非线性修饰仍需配合 CATE 或其他方法检查。 |
+| [tidyhte](https://github.com/ddimmery/tidyhte) · [文档](https://cran.r-project.org/package=tidyhte) | 以 tidy recipe 语义实现双重稳健的异质处理效应估计，支持交叉拟合、多个结局和多个修饰变量 | `R` `CRAN` `HTE` `doubly-robust` `cross-fitting` `effect-modifier` | 试过 | 16 | 用 basic_config()、add_moderator() 和 estimate_QoI() 串起 HTE 工作流；适合系统比较分类与连续修饰变量，但生存结局需先明确外部估计方案。 |
 
 ### 书与手册
 

@@ -124,6 +124,36 @@
   status: to-read
   note: "Python 侧的对照实现，看 meta-learner（S / T / X / R）的接口设计时参考。"
 
+- id: unihtee
+  type: package
+  section: 因果推断
+  name: unihtee
+  url: https://github.com/insightsengineering/unihtee
+  repo: insightsengineering/unihtee
+  homepage: https://insightsengineering.github.io/unihtee/
+  lang: R
+  source: GitHub
+  description_zh: "用 TEM-VIP 在高维数据中筛选治疗效应修饰变量，并提供绝对和相对效应尺度上的推断"
+  description_en: "Tools for uncovering treatment effect modifiers in high-dimensional data"
+  tags: [TEM-VIP, HTE, effect-modifier, causal-ML]
+  status: tried
+  note: "适合做单变量效应修饰筛选和正式推断；TEM-VIP 是边际线性投影，复杂非线性修饰仍需配合 CATE 或其他方法检查。"
+
+- id: tidyhte
+  type: package
+  section: 因果推断
+  name: tidyhte
+  url: https://github.com/ddimmery/tidyhte
+  repo: ddimmery/tidyhte
+  homepage: https://cran.r-project.org/package=tidyhte
+  lang: R
+  source: CRAN
+  description_zh: "以 tidy recipe 语义实现双重稳健的异质处理效应估计，支持交叉拟合、多个结局和多个修饰变量"
+  description_en: "Tidy semantics for estimation of heterogeneous treatment effects"
+  tags: [HTE, doubly-robust, cross-fitting, effect-modifier]
+  status: tried
+  note: "用 basic_config()、add_moderator() 和 estimate_QoI() 串起 HTE 工作流；适合系统比较分类与连续修饰变量，但生存结局需先明确外部估计方案。"
+
 - id: causal-inference-in-r
   type: book
   section: 因果推断
