@@ -286,6 +286,21 @@
   status: to-read
   note: "收的是 bootstrap 一章。延伸阅读：Lee / Lessler / Stuart 2010（PMC2807890）用 ML 改进 PS 加权；Cannas / Arpino 2019（Biometrical Journal）比较 PS 匹配与加权里的 ML 算法和平衡指标。"
 
+- id: beyond-the-ate
+  type: book
+  section: 因果推断
+  name: Beyond the ATE
+  url: https://www.beyondtheate.com/
+  repo: nt-williams/lmtp-workshop
+  authors: "Nick Williams（UC Berkeley 生统博士生 / Columbia Mailman）、Kara Rudolph（Columbia Mailman 流病）、Iván Díaz（NYU Grossman 生统）"
+  lang: R
+  free_online: true
+  description_zh: "lmtp 作者团队的会议 workshop 讲义：从干预的定义讲到 MTP、动态方案、IPSI 与生存分析，配 webR 可在浏览器里直接跑"
+  description_en: "Workshop for LMTP at various conferences"
+  tags: [workshop, MTP, lmtp, quarto, webR, GPL-3]
+  status: to-read
+  note: "与软件包里的 [lmtp](https://github.com/nt-williams/lmtp) 成对收：那条是包，这条是它唯一的正经学习入口（lmtp 没有 pkgdown 站）。11 章按“先定义估计量、再讲估计器、最后上手”的顺序走：Introduction → Defining Interventions → Estimators，然后是 lmtp 实操六节（静态效应与因果对比、动态方案 DTR、MTP、IPSI、生存分析、多元暴露）。最大的好处是 Quarto + webR，R 直接在浏览器里跑，不用先在本机装 lmtp 和 SuperLearner 就能过一遍。三位讲师分工正好覆盖三块：Williams 是包作者，Díaz 是方法学论文作者，Rudolph 做可迁移性与中介。定位要清楚：这是会议讲义不是教科书，理论推导的深度远不如 JASA 那篇，胜在能当天上手；只想看方法学定位、不碰代码的直接读 arXiv:2304.09460。仓库 [nt-williams/lmtp-workshop](https://github.com/nt-williams/lmtp-workshop) 协议是 GPL-3，和 lmtp 包本身的 AGPL-3 不是一个，引用讲义内容时按 GPL-3 对。从 SER 2024（Austin）一路讲到 ACIC 2026（盐湖城）、SER 2026（凤凰城）、SLDS 2026（布鲁克林），最后提交 2026-06，仍在随包更新。"
+
 - id: awesome-causal-inference
   type: site
   section: 因果推断
