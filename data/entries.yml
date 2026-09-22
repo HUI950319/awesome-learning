@@ -36,6 +36,21 @@
   status: tried
   note: "拿它找效应修饰变量时没跑赢 OLS 交互扫描；适合估计 CATE，不适合当变量筛选器。"
 
+- id: policytree
+  type: package
+  section: 因果推断
+  name: policytree
+  url: https://github.com/grf-labs/policytree
+  repo: grf-labs/policytree
+  homepage: https://grf-labs.github.io/policytree/
+  lang: R
+  source: CRAN
+  description_zh: "用双重稳健得分做策略学习：穷举搜索出全局最优的浅层决策树，给出可解释的分人群治疗分配规则"
+  description_en: "Policy learning via doubly robust empirical welfare maximization over trees"
+  tags: [policy-learning, doubly-robust, decision-tree, grf]
+  status: to-read
+  note: "grf 的下游：double_robust_scores() 吃 causal_forest / causal_survival_forest / instrumental_forest / multi_arm_causal_forest 的拟合结果，再交给 policy_tree() 学规则，生存结局也能走。它回答的是“谁该用哪种治疗”，不是“哪个变量修饰效应”，和 grf、model4you 那几条的用途不重叠。穷举搜索复杂度 O(p^k n^k (log n + d))，depth=2 就随样本量平方增长；连续协变量先四舍五入或离散化（或用 split.step）能大幅提速，更深的树用 hybrid_policy_tree()。学到的规则必须在留出集上评估，示例本身就是先 train 再 predict。"
+
 - id: doubleml
   type: package
   section: 因果推断

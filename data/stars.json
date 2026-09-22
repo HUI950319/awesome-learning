@@ -5,6 +5,10 @@
       "stars": 1111,
       "pushed_at": "2026-04-30"
     },
+    "grf-labs/policytree": {
+      "stars": 89,
+      "pushed_at": "2026-08-04"
+    },
     "DoubleML/doubleml-for-r": {
       "stars": 170,
       "pushed_at": "2026-09-01"
@@ -66,7 +70,7 @@
       "pushed_at": "2026-09-20"
     },
     "openai/whisper": {
-      "stars": 109466,
+      "stars": 109467,
       "pushed_at": "2026-08-31"
     },
     "yutto-dev/yutto": {
@@ -74,11 +78,11 @@
       "pushed_at": "2026-09-21"
     },
     "Imbad0202/academic-research-skills": {
-      "stars": 49099,
+      "stars": 49100,
       "pushed_at": "2026-09-21"
     },
     "K-Dense-AI/scientific-agent-skills": {
-      "stars": 46038,
+      "stars": 46039,
       "pushed_at": "2026-09-21"
     },
     "Aperivue/medsci-skills": {

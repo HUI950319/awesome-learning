@@ -3,7 +3,7 @@
 个人精选的 R 包、Agent Skills、视频工具、学习网站与 R 书清单，按临床研究与生信的分析工作流组织。
 每一条都带一句批注：为什么留下、在哪用过、踩过什么坑。
 
-- 条目：31（软件包 9 · Agent Skills 13 · 工具 1 · 书与手册 5 · 站点与清单 3）
+- 条目：32（软件包 10 · Agent Skills 13 · 工具 1 · 书与手册 5 · 站点与清单 3）
 - 状态：`在用` 正在项目里用 · `试过` 跑过但没固定进流程 · `待读` 收了还没细看
 - Star 数据更新于 2026-09-22
 
@@ -20,6 +20,7 @@
 | 名称 | 描述 | 标签 | 状态 | Star | 批注 |
 |---|---|---|---|---|---|
 | [grf](https://github.com/grf-labs/grf) · [文档](https://grf-labs.github.io/grf/) | 广义随机森林：因果森林、异质处理效应与工具变量森林 | `R` `CRAN` `causal-forest` `HTE` `effect-modifier` | 试过 | 1,111 | 拿它找效应修饰变量时没跑赢 OLS 交互扫描；适合估计 CATE，不适合当变量筛选器。 |
+| [policytree](https://github.com/grf-labs/policytree) · [文档](https://grf-labs.github.io/policytree/) | 用双重稳健得分做策略学习：穷举搜索出全局最优的浅层决策树，给出可解释的分人群治疗分配规则 | `R` `CRAN` `policy-learning` `doubly-robust` `decision-tree` `grf` | 待读 | 89 | grf 的下游：double_robust_scores() 吃 causal_forest / causal_survival_forest / instrumental_forest / multi_arm_causal_forest 的拟合结果，再交给 policy_tree() 学规则，生存结局也能走。它回答的是“谁该用哪种治疗”，不是“哪个变量修饰效应”，和 grf、model4you 那几条的用途不重叠。穷举搜索复杂度 O(p^k n^k (log n + d))，depth=2 就随样本量平方增长；连续协变量先四舍五入或离散化（或用 split.step）能大幅提速，更深的树用 hybrid_policy_tree()。学到的规则必须在留出集上评估，示例本身就是先 train 再 predict。 |
 | [DoubleML](https://github.com/DoubleML/doubleml-for-r) · [文档](https://docs.doubleml.org/) | 双重机器学习（Double / Debiased ML）的 R 实现，nuisance 模型走 mlr3 | `R` `CRAN` `DML` `debiased-ML` `mlr3` | 在用 | 170 | causalR 的 dml 敏感性分析（dml.sensemakr）建在它的拟合结果上。 |
 | [SuperLearner](https://github.com/ecpolley/SuperLearner) | 超级学习器：多算法加权集成，常作 TMLE、IPW 的 nuisance 估计器 | `R` `CRAN` `ensemble` `nuisance` `TMLE` | 在用 | 294 | causalR::get_PSW 的 super 方案用它估倾向评分，必须显式传 SL.library。 |
 | [StratifiedMedicine](https://cran.r-project.org/package=StratifiedMedicine) | 亚组识别与分层医学框架：PRISM 流程串起变量过滤、倾向评分、亚组模型与效应估计 | `R` `CRAN` `subgroup` `HTE` `MOB` `PRISM` | 试过 | 4 | 用 MOB 找效应修饰变量必须传 parm=2，否则预后变量也会被当成分裂点；先做变量过滤反而会多切出假亚组；“没找到亚组”表现为直接报错而不是空结果。 |
@@ -52,7 +53,7 @@
 
 | 名称 | 描述 | 标签 | 状态 | Star | 批注 |
 |---|---|---|---|---|---|
-| [video-transcribe-turbo（本地 Skill）](https://github.com/openai/whisper) | 基于本地 Whisper turbo 的批量视频 / 音频转写流程，生成 TXT、SRT、JSON，支持 CUDA、断点续跑与输出一致性验证 | `Python` `local-skill` `Whisper` `turbo` `TXT` `SRT` `JSON` `CUDA` | 在用 | 109,466 | 本机已安装 video-transcribe-turbo；默认中文用 turbo / zh，脚本一次加载模型并支持 resume 与 validate。它解决批量转写流程，不等同于逐字人工校对，也不负责画面 OCR。 |
+| [video-transcribe-turbo（本地 Skill）](https://github.com/openai/whisper) | 基于本地 Whisper turbo 的批量视频 / 音频转写流程，生成 TXT、SRT、JSON，支持 CUDA、断点续跑与输出一致性验证 | `Python` `local-skill` `Whisper` `turbo` `TXT` `SRT` `JSON` `CUDA` | 在用 | 109,467 | 本机已安装 video-transcribe-turbo；默认中文用 turbo / zh，脚本一次加载模型并支持 resume 与 validate。它解决批量转写流程，不等同于逐字人工校对，也不负责画面 OCR。 |
 | [bilibili-video-download（归档 Skill）](https://github.com/yutto-dev/yutto) | B 站视频下载工具的归档 Skill，底层使用 yutto，可按需通过 uvx yutto 获取视频文件 | `Python` `Bilibili` `download` `yutto` `uvx` | 待读 | 2,037 | 项目内仅保留归档版 Skill，本机尚未安装 yutto；检测到 uv，可在需要下载 B 站视频时使用 uvx yutto。它只负责下载，不是语音转写工具。 |
 
 ### 工具
@@ -67,8 +68,8 @@
 
 | 名称 | 描述 | 标签 | 状态 | Star | 批注 |
 |---|---|---|---|---|---|
-| [Academic Research Skills（ARS）](https://github.com/Imbad0202/academic-research-skills) | Claude Code 学术写作全流程插件：/ars-plan 苏格拉底式逐章规划、/ars-outline 大纲与证据图、/ars-full 研究→写作→审稿→修改→定稿、/ars-revision-coach 把审稿意见拆成修改路线图与回复信骨架 | `claude-code` `plugin` `pipeline` `CC-BY-NC` | 在用 | 49,099 | 本机以插件方式安装，会话启动即加载。协议 CC BY-NC 4.0，商用受限。书签收的是它的 Codex 移植版 [ARS-Codex](https://github.com/Imbad0202/academic-research-skills-codex)，内容同源，只是打包成单个 Codex skill。 |
-| [Scientific Agent Skills](https://github.com/K-Dense-AI/scientific-agent-skills) | K-Dense 的科研 Agent Skills 库：166 个 skill 加 78+ 科学数据库，覆盖生信、基因组、临床研究、药物研发与科学写作，遵循开放的 Agent Skills 标准，也打包成 Agent Plugins | `agent-skills` `bioinformatics` `clinical-research` `MIT` | 待读 | 46,038 | 原名 claude-scientific-skills，改名后不再绑定 Claude，配套论文 arXiv:2609.00065。本机已装的 claude-scientific-writer 插件（scientific-writing / literature-review / peer-review 等写作 skill）是 K-Dense 家的另一个仓库；这个库的重点是数据库与分析类 skill，写作只占一小部分。 |
+| [Academic Research Skills（ARS）](https://github.com/Imbad0202/academic-research-skills) | Claude Code 学术写作全流程插件：/ars-plan 苏格拉底式逐章规划、/ars-outline 大纲与证据图、/ars-full 研究→写作→审稿→修改→定稿、/ars-revision-coach 把审稿意见拆成修改路线图与回复信骨架 | `claude-code` `plugin` `pipeline` `CC-BY-NC` | 在用 | 49,100 | 本机以插件方式安装，会话启动即加载。协议 CC BY-NC 4.0，商用受限。书签收的是它的 Codex 移植版 [ARS-Codex](https://github.com/Imbad0202/academic-research-skills-codex)，内容同源，只是打包成单个 Codex skill。 |
+| [Scientific Agent Skills](https://github.com/K-Dense-AI/scientific-agent-skills) | K-Dense 的科研 Agent Skills 库：166 个 skill 加 78+ 科学数据库，覆盖生信、基因组、临床研究、药物研发与科学写作，遵循开放的 Agent Skills 标准，也打包成 Agent Plugins | `agent-skills` `bioinformatics` `clinical-research` `MIT` | 待读 | 46,039 | 原名 claude-scientific-skills，改名后不再绑定 Claude，配套论文 arXiv:2609.00065。本机已装的 claude-scientific-writer 插件（scientific-writing / literature-review / peer-review 等写作 skill）是 K-Dense 家的另一个仓库；这个库的重点是数据库与分析类 skill，写作只占一小部分。 |
 | [MedSci Skills](https://github.com/Aperivue/medsci-skills) · [文档](https://aperivue.com/skills) | 放射科医生做的临床研究 Agent Skills：59 个 skill 串起选题、检索、研究设计、样本量、统计、图表、写作、报告规范核查、期刊选择、审稿回复，内置 49 种报告指南与偏倚风险工具 | `clinical-research` `reporting-guidelines` `PRISMA` `citation-check` `MIT` | 待读 | 313 | 与临床稿件最贴：把报告指南符合性、引文核验、数值一致性做成投稿前的确定性门禁，这是它和泛用学术 skill 的差别。作者 Yoojin Nam（首尔峨山医院放射科），有 arXiv 论文与 Zenodo DOI；v5.0 新增的模型工程部分（PyTorch / MONAI）对 R 流程用不上。 |
 | [Medical Research Agent Skills（AIPOCH）](https://github.com/aipoch/medical-research-skills) · [文档](https://aipoch.com/agent-skills) | AIPOCH 的医学科研 skill 库，550+ 个，按证据洞察、方案设计、数据分析、学术写作四类组织，每个 skill 上线前过 MedSkillAudit 审计 | `medical-research` `bioinformatics` `protocol-design` `MIT` | 待读 | 1,905 | 体量太大不适合整库装，按研究阶段挑：文献与证据发现 79 个，方案设计里有因果推断规划与样本量计算，数据分析里有 R / Python 生信代码生成。仓库自带 skill-auditor，可拿来审自己写的 skill。 |
 | [Academic-Search](https://github.com/ustc-ai4science/academic-search) | 中科大 AI4Science 的学术检索 skill：arXiv、Semantic Scholar、OpenAlex、Crossref、Unpaywall、Google Scholar、知网多源检索，按学科路由（医学走 PubMed / Europe PMC / MeSH），去重、引用追踪、BibTeX 导出与开放获取 PDF 下载 | `literature-search` `CNKI` `OpenAlex` `BibTeX` `MIT` | 待读 | 646 | 功能与自己的 lit-to-zotero 高度重叠，差异点是知网支持和只取合法 OA PDF（明确标注 login_required / needs_institution，不绕付费墙）。CDP 浏览器模式会自动拉起独立的 Chrome profile，只用 API 检索则不启动。 |
