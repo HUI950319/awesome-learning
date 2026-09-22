@@ -56,14 +56,13 @@
   section: 因果推断
   name: fastpolicytree
   url: https://cran.r-project.org/package=fastpolicytree
-  repo: jcussens/tailoring
   lang: R
   source: CRAN
   description_zh: "policytree 的加速求解器，fastpolicytree() 与 policy_tree() 同接口，返回同一棵最优树但快得多"
   description_en: "Constructs Policy Trees from Covariate and Reward Data"
   tags: [policy-learning, policy-tree, performance, GPL-3]
   status: to-read
-  note: "只换求解器：奖励得分还得靠 grf / policytree 的 double_robust_scores() 先算（DESCRIPTION 里 policytree 只是 Suggests，实际配套用）。作者自测 500 例、30 个二值协变量、2 个动作、depth=4：policytree 约 125–138 秒，fastpolicytree 约 0.7–0.9 秒，三个包出的树相同。协议是 GPL (>= 3)，比 policytree 的 MIT 严，写进包或再分发前先确认。CRAN 1.0（2025-06-24），作者 James Cussens（布里斯托），论文 arXiv:2506.15435；源码在 jcussens/tailoring 里的 fastpolicytree 子目录，Star 数是那个混合仓库的，跟这个包的热度无关。"
+  note: "只换求解器：奖励得分还得靠 grf / policytree 的 double_robust_scores() 先算（DESCRIPTION 里 policytree 只是 Suggests，实际配套用）。作者自测 500 例、30 个二值协变量、2 个动作、depth=4：policytree 约 125–138 秒，fastpolicytree 约 0.7–0.9 秒，三个包出的树相同。协议是 GPL (>= 3)，比 policytree 的 MIT 严，写进包或再分发前先确认。CRAN 1.0（2025-06-24），作者 James Cussens（布里斯托），论文 arXiv:2506.15435；源码在 [jcussens/tailoring](https://github.com/jcussens/tailoring) 的 fastpolicytree 子目录（同仓库还有 C 版独立可执行文件），开发版用 devtools::install_github(\"jcussens/tailoring/fastpolicytree\")。"
 
 - id: sparsepolicytree
   type: package
