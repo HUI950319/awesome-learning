@@ -1,24 +1,12 @@
 {
   "updated_at": "2026-09-22",
   "repos": {
-    "guimatheus92/mcp-video-analyzer": {
-      "stars": 72,
-      "pushed_at": "2026-09-20"
-    },
-    "openai/whisper": {
-      "stars": 109446,
-      "pushed_at": "2026-08-31"
-    },
-    "yutto-dev/yutto": {
-      "stars": 2036,
-      "pushed_at": "2026-09-21"
-    },
     "grf-labs/grf": {
       "stars": 1111,
       "pushed_at": "2026-04-30"
     },
     "DoubleML/doubleml-for-r": {
-      "stars": 171,
+      "stars": 170,
       "pushed_at": "2026-09-01"
     },
     "ecpolley/SuperLearner": {
@@ -34,8 +22,16 @@
       "pushed_at": "2026-06-26"
     },
     "uber/causalml": {
-      "stars": 6002,
+      "stars": 6005,
       "pushed_at": "2026-08-20"
+    },
+    "insightsengineering/unihtee": {
+      "stars": 5,
+      "pushed_at": "2026-06-22"
+    },
+    "ddimmery/tidyhte": {
+      "stars": 16,
+      "pushed_at": "2026-09-14"
     },
     "r-causal/causal-inference-in-R": {
       "stars": 252,
@@ -49,36 +45,52 @@
       "stars": 957,
       "pushed_at": "2026-03-16"
     },
+    "Wenzhe-Huang/python-causality-handbook-zh": {
+      "stars": 106,
+      "pushed_at": "2026-02-28"
+    },
     "jbryer/psa": {
       "stars": 94,
       "pushed_at": "2026-04-01"
     },
     "matteocourthoud/awesome-causal-inference": {
-      "stars": 1189,
+      "stars": 1191,
       "pushed_at": "2026-04-21"
     },
     "HUI950319/causalR": {
       "stars": 1,
       "pushed_at": "2026-09-21"
     },
+    "guimatheus92/mcp-video-analyzer": {
+      "stars": 72,
+      "pushed_at": "2026-09-20"
+    },
+    "openai/whisper": {
+      "stars": 109466,
+      "pushed_at": "2026-08-31"
+    },
+    "yutto-dev/yutto": {
+      "stars": 2037,
+      "pushed_at": "2026-09-21"
+    },
     "Imbad0202/academic-research-skills": {
-      "stars": 48920,
+      "stars": 49099,
       "pushed_at": "2026-09-21"
     },
     "K-Dense-AI/scientific-agent-skills": {
-      "stars": 45836,
-      "pushed_at": "2026-09-14"
+      "stars": 46038,
+      "pushed_at": "2026-09-21"
     },
     "Aperivue/medsci-skills": {
       "stars": 313,
-      "pushed_at": "2026-09-15"
+      "pushed_at": "2026-09-21"
     },
     "aipoch/medical-research-skills": {
-      "stars": 1902,
+      "stars": 1905,
       "pushed_at": "2026-09-17"
     },
     "ustc-ai4science/academic-search": {
-      "stars": 643,
+      "stars": 646,
       "pushed_at": "2026-09-05"
     },
     "luwill/research-skills": {
@@ -86,36 +98,28 @@
       "pushed_at": "2026-09-21"
     },
     "Master-cai/Research-Paper-Writing-Skills": {
-      "stars": 6996,
+      "stars": 7032,
       "pushed_at": "2026-06-23"
     },
     "WUBING2023/PaperSpine": {
-      "stars": 5504,
-      "pushed_at": "2026-09-20"
+      "stars": 5553,
+      "pushed_at": "2026-09-22"
     },
     "brycewang-stanford/Auto-Empirical-Research-Skills": {
-      "stars": 3902,
-      "pushed_at": "2026-09-20"
+      "stars": 4108,
+      "pushed_at": "2026-09-21"
     },
     "Orchestra-Research/AI-Research-SKILLs": {
-      "stars": 12900,
+      "stars": 12939,
       "pushed_at": "2026-06-16"
     },
     "google-deepmind/science-skills": {
-      "stars": 3112,
+      "stars": 3121,
       "pushed_at": "2026-09-15"
     },
     "pengsida/learning_research": {
-      "stars": 14181,
+      "stars": 14211,
       "pushed_at": "2026-09-13"
-    },
-    "insightsengineering/unihtee": {
-      "stars": 5,
-      "pushed_at": "2026-06-22"
-    },
-    "ddimmery/tidyhte": {
-      "stars": 16,
-      "pushed_at": "2026-09-14"
     }
   }
 }

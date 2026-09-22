@@ -199,6 +199,21 @@
   status: to-read
   note: "讲法比统计教材直白，DID、合成控制、RDD 几章可与 R 书互补。"
 
+- id: python-causality-handbook-zh
+  type: book
+  section: 因果推断
+  name: "因果推断：献给求真敢为者（Brave and True 另一中译本）"
+  url: https://ci-book.huangwz.com
+  repo: Wenzhe-Huang/python-causality-handbook-zh
+  authors: "Matheus Facure 原著，黄文喆、许文立（澳门城市大学）中译"
+  lang: Python
+  free_online: true
+  description_zh: "《Causal Inference for the Brave and True》的另一个中译本，Python 代码外逐章补了 Stata 实现，配 Jupyter Book 在线站点"
+  description_en: "Causal Inference handbook｜学习因果推断的轻松指南"
+  tags: [textbook, econometrics, stata, 中文]
+  status: to-read
+  note: "与 xieliaing 译本同源不同译：01–25 章加 5 篇扩展章节齐全，卖点是逐章补的 Stata 代码（单独放在 [wenddymacro/stata-causality-handbook-zh](https://github.com/wenddymacro/stata-causality-handbook-zh)）。三套协议分开：Python 代码 MIT、译文 CC BY-NC-SA 4.0（非商业、相同方式共享）、Stata 代码 GPL-3.0，引用转载前先对协议。"
+
 - id: applied-psa-with-r
   type: book
   section: 因果推断
