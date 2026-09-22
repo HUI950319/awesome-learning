@@ -51,6 +51,34 @@
   status: to-read
   note: "grf 的下游：double_robust_scores() 吃 causal_forest / causal_survival_forest / instrumental_forest / multi_arm_causal_forest 的拟合结果，再交给 policy_tree() 学规则，生存结局也能走。它回答的是“谁该用哪种治疗”，不是“哪个变量修饰效应”，和 grf、model4you 那几条的用途不重叠。穷举搜索复杂度 O(p^k n^k (log n + d))，depth=2 就随样本量平方增长；连续协变量先四舍五入或离散化（或用 split.step）能大幅提速，更深的树用 hybrid_policy_tree()。学到的规则必须在留出集上评估，示例本身就是先 train 再 predict。"
 
+- id: fastpolicytree
+  type: package
+  section: 因果推断
+  name: fastpolicytree
+  url: https://cran.r-project.org/package=fastpolicytree
+  repo: jcussens/tailoring
+  lang: R
+  source: CRAN
+  description_zh: "policytree 的加速求解器，fastpolicytree() 与 policy_tree() 同接口，返回同一棵最优树但快得多"
+  description_en: "Constructs Policy Trees from Covariate and Reward Data"
+  tags: [policy-learning, policy-tree, performance, GPL-3]
+  status: to-read
+  note: "只换求解器：奖励得分还得靠 grf / policytree 的 double_robust_scores() 先算（DESCRIPTION 里 policytree 只是 Suggests，实际配套用）。作者自测 500 例、30 个二值协变量、2 个动作、depth=4：policytree 约 125–138 秒，fastpolicytree 约 0.7–0.9 秒，三个包出的树相同。协议是 GPL (>= 3)，比 policytree 的 MIT 严，写进包或再分发前先确认。CRAN 1.0（2025-06-24），作者 James Cussens（布里斯托），论文 arXiv:2506.15435；源码在 jcussens/tailoring 里的 fastpolicytree 子目录，Star 数是那个混合仓库的，跟这个包的热度无关。"
+
+- id: sparsepolicytree
+  type: package
+  section: 因果推断
+  name: sparsepolicytree
+  url: https://github.com/beniaminogreen/sparsepolicytree
+  repo: beniaminogreen/sparsepolicytree
+  lang: R
+  source: GitHub
+  description_zh: "policytree 的 Rust 多线程穷举搜索实现，sparse_policy_tree() 与 policy_tree() 同接口"
+  description_en: "Fast exhaustive tree search for policy learning"
+  tags: [policy-learning, policy-tree, Rust, multithread]
+  status: to-read
+  note: "名字里的 sparse 指协变量取值稀疏：README 自己写明只有在每个变量取值数较少（约 200 以内）时它才占优，稠密连续变量下 policytree 更快也更完善；fastpolicytree 的对照里它单线程 268 秒、4 线程 100 秒，都慢于 policytree 的 125 秒。编译需要本机装 Rust 工具链（Windows 走 rust 安装向导）；线程数由环境变量 RAYON_NUM_THREADS 控制，在线程池建好前设一次、每个 R 会话都要设。剪枝与 policytree 不完全一致（可能留下未剪的叶子），但预测应当相同。从未上 CRAN，最后一次提交 2023-10；README 里的 install_github(\"Yale-Medicaid/sparsepolicytree\") 现在重定向到 beniaminogreen，GitHub 上挂的 pkgdown 站点已 404。"
+
 - id: doubleml
   type: package
   section: 因果推断
