@@ -1,6 +1,18 @@
 {
-  "updated_at": "2026-09-21",
+  "updated_at": "2026-09-22",
   "repos": {
+    "guimatheus92/mcp-video-analyzer": {
+      "stars": 72,
+      "pushed_at": "2026-09-20"
+    },
+    "openai/whisper": {
+      "stars": 109446,
+      "pushed_at": "2026-08-31"
+    },
+    "yutto-dev/yutto": {
+      "stars": 2036,
+      "pushed_at": "2026-09-21"
+    },
     "grf-labs/grf": {
       "stars": 1111,
       "pushed_at": "2026-04-30"

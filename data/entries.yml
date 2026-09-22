@@ -2,7 +2,7 @@
 #
 # 字段：
 #   id             唯一标识，小写，用连字符
-#   type           package | skill | book | site（skill = Agent Skills 仓库）
+#   type           package | skill | tool | book | site（skill = Agent Skills 仓库）
 #   section        所属板块，README 按此分组、按首次出现的顺序排列
 #   name           显示名
 #   url            主链接，README 里名称指向这里
@@ -208,6 +208,47 @@
   status: using
   note: "本清单里 related 指向 causalR 的条目，都能在这个站点找到对应章节。"
   related: [causalR]
+
+# ---------------------------------------------------------------- 视频提取
+
+- id: mcp-video-analyzer
+  type: tool
+  section: 视频提取
+  name: mcp-video-analyzer
+  url: https://github.com/guimatheus92/mcp-video-analyzer
+  repo: guimatheus92/mcp-video-analyzer
+  lang: Python
+  description_zh: "已注册的 MCP 视频分析服务：语音转写、关键帧提取、OCR、视频元数据与时间线分析，支持本地视频及 YouTube / Bilibili 链接"
+  description_en: "MCP server for video transcription, keyframes, OCR, metadata and timeline analysis"
+  tags: [MCP, video, ASR, OCR, Whisper, FFmpeg]
+  status: using
+  note: "本机已安装并注册 0.10.1，CUDA 使用 RTX 5090 Laptop GPU；调用 get_transcript 时显式传 model=turbo，长视频和批量任务转用 video-transcribe-turbo，避免把默认 small 当成 turbo。"
+
+- id: video-transcribe-turbo
+  type: skill
+  section: 视频提取
+  name: video-transcribe-turbo（本地 Skill）
+  url: https://github.com/openai/whisper
+  repo: openai/whisper
+  lang: Python
+  description_zh: "基于本地 Whisper turbo 的批量视频 / 音频转写流程，生成 TXT、SRT、JSON，支持 CUDA、断点续跑与输出一致性验证"
+  description_en: "Local batch transcription workflow built around Whisper turbo with TXT, SRT and JSON outputs"
+  tags: [local-skill, Whisper, turbo, TXT, SRT, JSON, CUDA]
+  status: using
+  note: "本机已安装 video-transcribe-turbo；默认中文用 turbo / zh，脚本一次加载模型并支持 resume 与 validate。它解决批量转写流程，不等同于逐字人工校对，也不负责画面 OCR。"
+
+- id: bilibili-video-download
+  type: skill
+  section: 视频提取
+  name: bilibili-video-download（归档 Skill）
+  url: https://github.com/yutto-dev/yutto
+  repo: yutto-dev/yutto
+  lang: Python
+  description_zh: "B 站视频下载工具的归档 Skill，底层使用 yutto，可按需通过 uvx yutto 获取视频文件"
+  description_en: "Archived skill for downloading Bilibili videos with yutto"
+  tags: [Bilibili, download, yutto, uvx]
+  status: to-read
+  note: "项目内仅保留归档版 Skill，本机尚未安装 yutto；检测到 uv，可在需要下载 B 站视频时使用 uvx yutto。它只负责下载，不是语音转写工具。"
 
 # ---------------------------------------------------------------- 撰写润色
 

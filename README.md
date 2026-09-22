@@ -1,15 +1,16 @@
 # awesome-learning
 
-个人精选的 R 包、Agent Skills、学习网站与 R 书清单，按临床研究与生信的分析工作流组织。
+个人精选的 R 包、Agent Skills、视频工具、学习网站与 R 书清单，按临床研究与生信的分析工作流组织。
 每一条都带一句批注：为什么留下、在哪用过、踩过什么坑。
 
-- 条目：25（软件包 7 · Agent Skills 11 · 书与手册 4 · 站点与清单 3）
+- 条目：28（软件包 7 · Agent Skills 13 · 工具 1 · 书与手册 4 · 站点与清单 3）
 - 状态：`在用` 正在项目里用 · `试过` 跑过但没固定进流程 · `待读` 收了还没细看
-- Star 数据更新于 2026-09-21
+- Star 数据更新于 2026-09-22
 
 ## 目录
 
 - [因果推断](#因果推断)
+- [视频提取](#视频提取)
 - [撰写润色](#撰写润色)
 
 ## 因果推断
@@ -41,6 +42,21 @@
 |---|---|---|---|---|
 | [awesome-causal-inference（libraries）](https://github.com/matteocourthoud/awesome-causal-inference/blob/main/src/libraries.md) | 跨语言因果推断资源清单，libraries 页按语言列出 R、Python、Stata 的因果库 | `awesome-list` `libraries` | 在用 | 找某个方法有没有现成实现时先翻这一页；本仓库不重复它的全量，只收实际用过或准备用的。 |
 | [因果推断读书笔记（causalR）](https://hui950319.github.io/causalR/) | 自己的因果推断读书笔记 Quarto 站点，也是 causalR 包（get_sens / plt_sens 敏感性分析）的主页 | `own` `notes` `quarto` `sensitivity-analysis` | 在用 | 本清单里 related 指向 causalR 的条目，都能在这个站点找到对应章节。 |
+
+## 视频提取
+
+### Agent Skills
+
+| 名称 | 描述 | 标签 | 状态 | Star | 批注 |
+|---|---|---|---|---|---|
+| [video-transcribe-turbo（本地 Skill）](https://github.com/openai/whisper) | 基于本地 Whisper turbo 的批量视频 / 音频转写流程，生成 TXT、SRT、JSON，支持 CUDA、断点续跑与输出一致性验证 | `Python` `local-skill` `Whisper` `turbo` `TXT` `SRT` `JSON` `CUDA` | 在用 | 109,446 | 本机已安装 video-transcribe-turbo；默认中文用 turbo / zh，脚本一次加载模型并支持 resume 与 validate。它解决批量转写流程，不等同于逐字人工校对，也不负责画面 OCR。 |
+| [bilibili-video-download（归档 Skill）](https://github.com/yutto-dev/yutto) | B 站视频下载工具的归档 Skill，底层使用 yutto，可按需通过 uvx yutto 获取视频文件 | `Python` `Bilibili` `download` `yutto` `uvx` | 待读 | 2,036 | 项目内仅保留归档版 Skill，本机尚未安装 yutto；检测到 uv，可在需要下载 B 站视频时使用 uvx yutto。它只负责下载，不是语音转写工具。 |
+
+### 工具
+
+| 名称 | 描述 | 标签 | 状态 | Star | 批注 |
+|---|---|---|---|---|---|
+| [mcp-video-analyzer](https://github.com/guimatheus92/mcp-video-analyzer) | 已注册的 MCP 视频分析服务：语音转写、关键帧提取、OCR、视频元数据与时间线分析，支持本地视频及 YouTube / Bilibili 链接 | `Python` `MCP` `video` `ASR` `OCR` `Whisper` `FFmpeg` | 在用 | 72 | 本机已安装并注册 0.10.1，CUDA 使用 RTX 5090 Laptop GPU；调用 get_transcript 时显式传 model=turbo，长视频和批量任务转用 video-transcribe-turbo，避免把默认 small 当成 turbo。 |
 
 ## 撰写润色
 

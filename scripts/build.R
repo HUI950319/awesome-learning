@@ -16,6 +16,7 @@ required <- c("id", "type", "section", "name", "url", "status", "note", "descrip
 type_meta <- list(
   package = list(title = "软件包"),
   skill   = list(title = "Agent Skills"),
+  tool    = list(title = "工具"),
   book    = list(title = "书与手册"),
   site    = list(title = "站点与清单")
 )
@@ -72,6 +73,7 @@ renderers <- list(
   )
 )
 renderers$skill <- renderers$package  # Agent Skills 仓库与软件包同一版式
+renderers$tool  <- renderers$package  # 工具与软件包同一版式
 
 table_md <- function(hdr, rows) {
   rows <- lapply(rows, function(r) vapply(r, cell, ""))
@@ -88,7 +90,7 @@ n_type   <- table(factor(types, levels = names(type_meta)))
 out <- c(
   "# awesome-learning",
   "",
-  "个人精选的 R 包、Agent Skills、学习网站与 R 书清单，按临床研究与生信的分析工作流组织。",
+  "个人精选的 R 包、Agent Skills、视频工具、学习网站与 R 书清单，按临床研究与生信的分析工作流组织。",
   "每一条都带一句批注：为什么留下、在哪用过、踩过什么坑。",
   "",
   sprintf("- 条目：%d（%s）", length(entries),
