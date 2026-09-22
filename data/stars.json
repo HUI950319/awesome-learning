@@ -41,6 +41,10 @@
       "stars": 16,
       "pushed_at": "2026-09-14"
     },
+    "nt-williams/lmtp": {
+      "stars": 87,
+      "pushed_at": "2026-07-01"
+    },
     "r-causal/causal-inference-in-R": {
       "stars": 252,
       "pushed_at": "2026-08-06"
@@ -82,11 +86,11 @@
       "pushed_at": "2026-09-21"
     },
     "Imbad0202/academic-research-skills": {
-      "stars": 49103,
+      "stars": 49107,
       "pushed_at": "2026-09-21"
     },
     "K-Dense-AI/scientific-agent-skills": {
-      "stars": 46042,
+      "stars": 46046,
       "pushed_at": "2026-09-21"
     },
     "Aperivue/medsci-skills": {
@@ -110,15 +114,15 @@
       "pushed_at": "2026-06-23"
     },
     "WUBING2023/PaperSpine": {
-      "stars": 5553,
+      "stars": 5556,
       "pushed_at": "2026-09-22"
     },
     "brycewang-stanford/Auto-Empirical-Research-Skills": {
-      "stars": 4110,
+      "stars": 4116,
       "pushed_at": "2026-09-21"
     },
     "Orchestra-Research/AI-Research-SKILLs": {
-      "stars": 12939,
+      "stars": 12940,
       "pushed_at": "2026-06-16"
     },
     "google-deepmind/science-skills": {
@@ -126,7 +130,7 @@
       "pushed_at": "2026-09-15"
     },
     "pengsida/learning_research": {
-      "stars": 14212,
+      "stars": 14214,
       "pushed_at": "2026-09-13"
     }
   }

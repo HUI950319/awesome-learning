@@ -196,6 +196,21 @@
   status: tried
   note: "用 basic_config()、add_moderator() 和 estimate_QoI() 串起 HTE 工作流；适合系统比较分类与连续修饰变量，但生存结局需先明确外部估计方案。"
 
+- id: lmtp
+  type: package
+  section: 因果推断
+  name: lmtp
+  url: https://github.com/nt-williams/lmtp
+  repo: nt-williams/lmtp
+  homepage: https://www.beyondtheate.com/
+  lang: R
+  source: CRAN
+  description_zh: "修正处理策略（MTP）的非参数因果效应估计：干预相对暴露的自然值定义，支持连续、多元暴露与纵向时变混杂"
+  description_en: "Non-parametric Causal Effects Based on Modified Treatment Policies"
+  tags: [MTP, longitudinal, TMLE, SDR, AGPL-3]
+  status: to-read
+  note: "补的是本节最大的空白：grf / policytree / unihtee / tidyhte / model4you 那批全是单时点，回答“谁该用哪种治疗”；lmtp 回答“所有人的暴露轨迹按某规则移位会怎样”，纵向时变处理这块此前一个包都没有。卖点是把干预定义成相对暴露自然值的移位（如“每人比实际多运动 30 分钟”），连续暴露下不再必然违反正性假设；处理机制统一走密度比分类，绕开连续暴露的密度估计。主力估计量是 TMLE 与 SDR（序贯双重稳健），另有 lmtp_ipw / lmtp_sub 可作对照；暴露支持二值、分类、连续、多元，结局支持二值、连续、生存（含竞争风险）与删失，动态方案、IPSI、聚类数据与调查权重都内置。三个坑：一、它不解决识别问题，序贯可交换性（无不可测时变混杂）照样要，别以为换上 TMLE/SDR 就洗白了混杂；二、shift 函数选得是否科学合理是全部论证的命门，选错了统计再漂亮也没用；三、SuperLearner × 时间点 × 交叉拟合折数，长随访计算量很可观（Imports 里带 future + progressr 就是为这个）。协议 AGPL-3，比 policytree 的 MIT、fastpolicytree 的 GPL-3 都严（多一条网络服务分发条款），封进 causalR 前先查依赖协议兼容性，日常分析自用不受影响。CRAN 1.5.4（2026-05-07），作者 Nicholas Williams + Iván Díaz（Weill Cornell）。没有 pkgdown 站（nt-williams.github.io/lmtp 是 404），学习入口走作者自建的 [Beyond the ATE](https://www.beyondtheate.com/)，Quarto + webR 可在浏览器里直接跑；只想看方法学定位不碰代码的读 arXiv:2304.09460。方法学论文 Díaz, Williams, Hoffman, Schenck (2021, JASA)，软件论文 Williams & Díaz (2023, Observational Studies)。明确不支持中介分析，纵向中介是同组另一个包 [lcmmtp](https://github.com/nt-williams/lcmmtp)。"
+
 - id: causal-inference-in-r
   type: book
   section: 因果推断
