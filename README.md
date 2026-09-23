@@ -3,9 +3,9 @@
 个人精选的 R 包、Agent Skills、视频工具、学习网站与 R 书清单，按临床研究与生信的分析工作流组织。
 每一条都带一句批注：为什么留下、在哪用过、踩过什么坑。
 
-- 条目：39（软件包 16 · Agent Skills 13 · 工具 1 · 书与手册 6 · 站点与清单 3）
+- 条目：41（软件包 18 · Agent Skills 13 · 工具 1 · 书与手册 6 · 站点与清单 3）
 - 状态：`在用` 正在项目里用 · `试过` 跑过但没固定进流程 · `待读` 收了还没细看
-- Star 数据更新于 2026-09-22
+- Star 数据更新于 2026-09-23
 
 ## 目录
 
@@ -35,6 +35,8 @@
 | [lcmmtp](https://github.com/nt-williams/lcmmtp) | 纵向因果中介的非参数估计：处理、中介、混杂都可随时间变化，用修正处理策略（MTP）定义干预，能处理中间混杂变量 | `R` `GitHub` `mediation` `MTP` `longitudinal` `lmtp` `experimental` | 待读 | 12 | lmtp 的同门延伸，补中介这块（lmtp 本身明确不支持中介）。最值钱的是变量结构里那个 Z：lcmmtp_variables$new(L=, A=, Z=, M=, Y=, cens=) 的 Z 是中间混杂变量——被处理影响、又同时影响中介和结局，这正是经典 Baron-Kenny 和自然直接/间接效应垮掉的地方，跨世界可交换性在这里既不能随机化保证也不可证伪。主函数 lcmmtp(data, vars, d_prime, d_star, control) 吃两个 MTP 做对比，d_prime / d_star 都是 function(data, trt) 形式，和 lmtp 的 shift 函数写法一致，从 lmtp 迁过来几乎零成本。三个坑：一、生命周期标的是 experimental，作者自己说早期项目、生产环境慎用，接口可能破坏性变更；二、nuisance 后端是 mlr3superlearner 而不是 lmtp 用的 SuperLearner，两个包的学习器配置写法不通用，而且它挂在 DESCRIPTION 的 Remotes: 里，装的时候会顺带从 GitHub 拉 nt-williams/mlr3superlearner；三、协议只在 DESCRIPTION 里写了 GPL (>= 3)，仓库根目录没有 LICENSE 文件，GitHub API 识别不出协议，要引用或再分发前先跟作者确认。从未上 CRAN，v0.1.0，最后提交 2025-09，比 lmtp 本体冷清得多。 |
 | [pci2s](https://github.com/KenLi93/pci2s) | 回归式代理因果推断（proximal causal inference）：用一对负控制变量做两阶段回归，在存在不可测混杂时估计因果效应 | `R` `GitHub` `proximal` `negative-control` `unmeasured-confounding` `2SLS` `MIT` | 待读 | 9 | 收它是因为它补的洞和本节其他包都不同：grf / lmtp / DoubleML 一概假定无不可测混杂，proximal 是少数正面处理残余混杂的路子，也是审稿人问“你怎么排除未测量混杂”时除敏感性分析外能给的另一种答案。代价是要找到一对合格的代理——负控制暴露（不直接影响结局）和负控制结局（不被处理影响），两者都要与未测混杂相关；这在 EHR 里通常是全流程最难的一步，方法本身反而不难。卖点是回归式实现：两阶段 GLM，绕开了 proximal 早期要解积分方程的门槛，按结局类型分五个函数——p2sls.lm 线性、p2sls.loglin 对数线性、p2sls.negbin 负二项、p2sls.logitreg 逻辑、p2sls.ah 可加风险（右删失生存，临床最常用的那个）。论文是 Liu, Park, Li, Tchetgen Tchetgen (2024, American Journal of Epidemiology) 加 Li et al. (2024) 的生存扩展，入门综述看 Shi et al. (2020) 与 Tchetgen Tchetgen (2024)。两处仓库瑕疵别被带偏：DESCRIPTION 的 License 字段是没渲染的 usethis 模板占位符 use_mit_license()，实际协议以 README 和仓库 LICENSE 的 MIT 为准；README 顶上的 R-CMD-check 徽章指向的是 r-lib/usethis，是复制模板时没改，不代表本包的 CI 状态。生命周期标 stable，未上 CRAN，装法 pak::pak("KenLi93/pci2s")。CRAN 上的同类替代有 PCL（两阶段 proximal 最小二乘，但停在 2021-04 的 1.0）和 BiTSLS（双向 proximal，MIT，2025-05），要走 CRAN 依赖时再考虑。 |
 | [contdid](https://github.com/bcallaway11/contdid) · [文档](https://bcallaway11.github.io/contdid/) | 连续处理下的双重差分：交错采纳的面板数据里估计剂量反应函数、按剂量的 ATT 与平均因果反应（ACRT） | `R` `CRAN` `DID` `continuous-treatment` `staggered-adoption` `panel` `dose-response` | 待读 | 77 | 只在做政策或服务评估时才用得上，纯临床队列用不着——收它是因为它正是 Cinelli 等 (2025, arXiv:2508.17099) 点名要搭的那座桥：面板数据文献（计量）和时变处理文献（生物统计）长期各说各话，而连续剂量 DiD 正在把两边接起来（更直接的一篇是 arXiv:2512.00296，把 MTP 的随机政策移位搬进了 DiD）。估三个东西：按剂量的 ATT(d)、平均因果反应 ACRT(d)（剂量的导数）和整条剂量反应曲线；函数是 cont_did()，配 ggcont_did() 画图、simulate_contdid_data() 造测试数据。dose_est_method="cck" 走 npiv 的 Chen et al. (2025) 非参数估计，不用预设剂量的函数形式，但目前只支持两期或把多期折叠后的数据。**限制很硬，用之前先对一遍**：alpha 阶段，不支持离散处理、不支持重复截面、不支持非平衡面板、不支持时变剂量，而且不支持协变量——最后这条对观察性政策评估基本是硬伤，平行趋势只能无条件地假定。剂量必须在单位内不随时间变。CRAN 0.1.1（2026-07-21），GPL-3，作者 Brantly Callaway（佐治亚大学，did 包同一作者），实现的是 Callaway, Goodman-Bacon & Sant'Anna (2025)。 |
+| [CoxAIPW](https://cran.r-project.org/package=CoxAIPW) | 含信息性删失时，对边际结构 Cox 模型中的因果 log hazard ratio 做双重稳健估计与推断 | `R` `CRAN` `AIPW` `survival` `informative-censoring` `cross-fitting` `GPL-3` | 待读 | 1 | 针对二值处理与信息性删失的边际结构 Cox 模型；交叉拟合结合结局、删失和倾向评分三个工作模型。若比例风险假设不成立，目标是时变 log hazard ratio 的加权平均；与直接估计调整生存曲线的方法不同。 |
+| [adjustedCurves](https://cran.r-project.org/package=adjustedCurves) · [文档](https://robindenz1.github.io/adjustedCurves/) | 用直接调整、IPTW、AIPW、经验似然或 TMLE 估计混杂调整生存曲线与累积发生函数，并支持曲线比较和调整 RMST | `R` `CRAN` `survival` `CIF` `IPTW` `AIPW` `TMLE` `RMST` `GPL-3` | 待读 | 47 | 同一接口覆盖多种调整估计器，可估计并比较调整生存曲线或竞争风险下的原因别 CIF，也能计算调整 RMST；具体方法及依赖随估计器而异。 |
 
 ### 书与手册
 

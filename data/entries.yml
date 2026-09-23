@@ -254,6 +254,35 @@
   status: to-read
   note: "只在做政策或服务评估时才用得上，纯临床队列用不着——收它是因为它正是 Cinelli 等 (2025, arXiv:2508.17099) 点名要搭的那座桥：面板数据文献（计量）和时变处理文献（生物统计）长期各说各话，而连续剂量 DiD 正在把两边接起来（更直接的一篇是 arXiv:2512.00296，把 MTP 的随机政策移位搬进了 DiD）。估三个东西：按剂量的 ATT(d)、平均因果反应 ACRT(d)（剂量的导数）和整条剂量反应曲线；函数是 cont_did()，配 ggcont_did() 画图、simulate_contdid_data() 造测试数据。dose_est_method=\"cck\" 走 npiv 的 Chen et al. (2025) 非参数估计，不用预设剂量的函数形式，但目前只支持两期或把多期折叠后的数据。**限制很硬，用之前先对一遍**：alpha 阶段，不支持离散处理、不支持重复截面、不支持非平衡面板、不支持时变剂量，而且不支持协变量——最后这条对观察性政策评估基本是硬伤，平行趋势只能无条件地假定。剂量必须在单位内不随时间变。CRAN 0.1.1（2026-07-21），GPL-3，作者 Brantly Callaway（佐治亚大学，did 包同一作者），实现的是 Callaway, Goodman-Bacon & Sant'Anna (2025)。"
 
+- id: coxaipw
+  type: package
+  section: 因果推断
+  name: CoxAIPW
+  url: https://cran.r-project.org/package=CoxAIPW
+  repo: charlesluo1002/CoxAIPW
+  lang: R
+  source: CRAN
+  description_zh: "含信息性删失时，对边际结构 Cox 模型中的因果 log hazard ratio 做双重稳健估计与推断"
+  description_en: "Doubly Robust Inference for Cox Marginal Structural Model with Informative Censoring"
+  tags: [AIPW, survival, informative-censoring, cross-fitting, GPL-3]
+  status: to-read
+  note: "针对二值处理与信息性删失的边际结构 Cox 模型；交叉拟合结合结局、删失和倾向评分三个工作模型。若比例风险假设不成立，目标是时变 log hazard ratio 的加权平均；与直接估计调整生存曲线的方法不同。"
+
+- id: adjustedcurves
+  type: package
+  section: 因果推断
+  name: adjustedCurves
+  url: https://cran.r-project.org/package=adjustedCurves
+  repo: RobinDenz1/adjustedCurves
+  homepage: https://robindenz1.github.io/adjustedCurves/
+  lang: R
+  source: CRAN
+  description_zh: "用直接调整、IPTW、AIPW、经验似然或 TMLE 估计混杂调整生存曲线与累积发生函数，并支持曲线比较和调整 RMST"
+  description_en: "Confounder-Adjusted Survival Curves and Cumulative Incidence Functions"
+  tags: [survival, CIF, IPTW, AIPW, TMLE, RMST, GPL-3]
+  status: to-read
+  note: "同一接口覆盖多种调整估计器，可估计并比较调整生存曲线或竞争风险下的原因别 CIF，也能计算调整 RMST；具体方法及依赖随估计器而异。"
+
 - id: causal-inference-in-r
   type: book
   section: 因果推断

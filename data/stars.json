@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-22",
+  "updated_at": "2026-09-23",
   "repos": {
     "grf-labs/grf": {
       "stars": 1111,
@@ -56,6 +56,14 @@
     "bcallaway11/contdid": {
       "stars": 77,
       "pushed_at": "2026-07-21"
+    },
+    "charlesluo1002/CoxAIPW": {
+      "stars": 1,
+      "pushed_at": "2023-09-12"
+    },
+    "RobinDenz1/adjustedCurves": {
+      "stars": 47,
+      "pushed_at": "2026-08-27"
     },
     "r-causal/causal-inference-in-R": {
       "stars": 252,
